@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Katta Sayt — Demo</title>
+  <meta name="description" content="Katta, zamonaviy va responsiv bitta fayl sayt shabloni." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#06b6d4; --glass: rgba(255,255,255,0.04);
+      --maxw:1200px; --radius:14px; --gap:18px; --container-padding:24px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#071021);color:#e6eef6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:var(--container-padding)}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav{display:flex;gap:14px;align-items:center}
+    .navlink{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:15px}
+    .navlink:hover{background:var(--glass);color:#fff}
+    .cta{padding:9px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7c3aed);font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero-card{padding:28px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    h1{font-size:34px;margin:0 0 12px 0}
+    p.lead{color:var(--muted);margin:0 0 20px 0;line-height:1.6}
+    .actions{display:flex;gap:12px}
+
+    /* Stats */
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;min-width:112px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    /* Sidebar card */
+    .card{padding:20px;border-radius:12px;background:rgba(255,255,255,0.02)}
+    .subscribe input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+    .subscribe button{margin-top:10px;padding:10px 12px;border-radius:10px;width:100%;border:0;background:var(--accent);color:#012;cursor:pointer}
+
+    /* Features */
+    .features{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .feature h3{margin:0 0 8px 0}
+    .feature p{color:var(--muted);margin:0}
+
+    /* Portfolio */
+    .portfolio{margin-top:28px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .tile{border-radius:12px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:120px}
+
+    /* Blog & contact */
+    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:28px}
+    .post{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02)}
+    .contact form{display:flex;flex-direction:column;gap:10px}
+    .contact input,.contact textarea{padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:inherit}
+    .contact button{padding:10px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent),#7c3aed);font-weight:600}
+
+    footer{margin-top:28px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:flex;justify-content:space-between;align-items:center}
+    footer p{color:var(--muted);margin:0}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      nav{display:none}
+      .menu-toggle{display:inline-flex}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px}
+    .menu-toggle{display:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">KS</div>
+        <div>
+          <div style="font-weight:700">Katta Sayt</div>
+          <div class="muted" style="font-size:13px">Zamonaviy one-page shablon</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="navlink" href="#features">Xususiyatlar</a>
+        <a class="navlink" href="#portfolio">Portfolio</a>
+        <a class="navlink" href="#blog">Blog</a>
+        <a class="navlink" href="#contact">Kontakt</a>
+        <a class="cta" href="#">Ro'yxatdan o'tish</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="menu" onclick="toggleMobile()">☰</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Professional veb-sayt, tez, kengaytiriladigan</h1>
+          <p class="lead">Bu shablon katta sayt uchun boshlang'ich nuqta: landing, portfolio, blog va kontakt shakli bilan. HTML/CSS/JS bitta faylda, o'zgartirish oson.</p>
+          <div class="actions">
+            <a class="cta" href="#contact">Bog'lanish</a>
+            <a class="navlink" href="#portfolio">Ishlarimizni ko'rish</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><strong>120+</strong><span>Proyektlar</span></div>
+            <div class="stat"><strong>8 yil</strong><span>Tajriba</span></div>
+            <div class="stat"><strong>24/7</strong><span>Qo'llab-quvvatlash</span></div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3>Yangiliklarga obuna bo'ling</h3>
+          <p class="muted">Eng so'nggi yangiliklar va yangilanishlarni olish uchun elektron pochtangizni kiriting.</p>
+          <div class="subscribe">
+            <input id="email" type="email" placeholder="email@example.com" />
+            <button onclick="subscribe()">Obuna bo'lish</button>
+          </div>
+
+          <div style="margin-top:16px">
+            <div class="pill">Ishonchli</div>
+            <div class="pill" style="margin-left:8px">Tez</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="features">
+        <div class="feature">
+          <h3>Responsiv dizayn</h3>
+          <p>Telefon, planshet va desktop uchun moslashadi. Foydalanuvchi tajribasi birinchi o'rinda.</p>
+        </div>
+        <div class="feature">
+          <h3>Tez yuklanadi</h3>
+          <p>Optimallashtirilgan kod va minimal rasmlar saytingiz tez yuklanishini ta'minlaydi.</p>
+        </div>
+        <div class="feature">
+          <h3>Oson integratsiya</h3>
+          <p>API, analytics va to'lov tizimlarini osongina ulash mumkin.</p>
+        </div>
+        <div class="feature">
+          <h3>Kengaytiriladigan</h3>
+          <p>Komponentlar modular qilib yozilgan, yangi bo'limlar qo'shish oson.</p>
+        </div>
+      </section>
+
+      <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="grid">
+          <div class="tile">Veb-ilova A — qisqacha izoh</div>
+          <div class="tile">Korxona B — dizayn + integratsiya</div>
+          <div class="tile">Platforma C — skalalanadigan yechim</div>
+          <div class="tile">Mobil ilova — UI/UX</div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div>
+          <h2 id="blog">Oxirgi maqolalar</h2>
+          <article class="post">
+            <h3>Qanday qilib kattaroq sayt loyihalash</h3>
+            <p class="muted">Qisqacha: modul yondashuv, performans va xavfsizlikni boshqarish haqida.</p>
+          </article>
+
+          <article class="post" style="margin-top:12px">
+            <h3>Performance tuning: 7 asosiy qadam</h3>
+            <p class="muted">Kukilar, caching va lazy-loading misollari bilan.</p>
+          </article>
+        </div>
+
+        <aside class="contact card" id="contact">
+          <h3>Kontakt</h3>
+          <form onsubmit="event.preventDefault(); sendMessage();">
+            <input id="name" placeholder="Ismingiz" required />
+            <input id="email2" placeholder="Email" type="email" required />
+            <textarea id="message" rows="5" placeholder="Xabar..." required></textarea>
+            <button type="submit">Yuborish</button>
+          </form>
+        </aside>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Katta Sayt. Barcha huquqlar himoyalangan.</p>
+      <p class="muted">Manzil — Toshkent · Telefon: +998 90 000 00 00</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleMobile(){
+      const nav = document.querySelector('nav');
+      if(nav.style.display==='flex'){nav.style.display='none'}else{nav.style.display='flex'}
+    }
+    function subscribe(){
+      const e = document.getElementById('email').value.trim();
+      if(!e){alert('Email kiriting');return}
+      alert('Rahmat. Siz obuna bo'ldingiz: ' + e);
+      document.getElementById('email').value='';
+    }
+    function sendMessage(){
+      const n = document.getElementById('name').value.trim();
+      const e = document.getElementById('email2').value.trim();
+      const m = document.getElementById('message').value.trim();
+      if(!n||!e||!m){alert('Iltimos barcha maydonlarni to'ldiring');return}
+      alert('Xabaringiz qabul qilindi. Rahmat, ' + n + '!');
+      document.getElementById('name').value='';document.getElementById('email2').value='';document.getElementById('message').value='';
+    }
+  </script>
+</body>
+</html>
